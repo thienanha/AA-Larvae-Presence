@@ -24,7 +24,7 @@ The dataset was compiled from a study conducted in the city of Guayaquil (popula
 
 **Figure 1**. Map of Guayaquil with sampled locations categorized by _Ae. aegypti_ larvae presence or absence
 
-![](RackMultipart20200720-4-4wn0p7_html_c148650d022a14ff.png)
+![](./images/figure1.png "figure 1")
 
 _Household Covariates_
 
@@ -38,13 +38,13 @@ We were interested in creating a model that was able to classify whether househo
 
 **Figure 2**. Count plot of larvae presence and absence in Guayaquil dataset
 
-![](RackMultipart20200720-4-4wn0p7_html_616e3c5df43709e3.png)
+![](./images/figure2.png "figure 2")
 
 Our other option was to create a regression model that analyzes pupae index. However, since pupae index focused only on positive counts (Fig. 3), we determined that the missing data on pupae absence would result in an incomplete analysis. _Ae. aegypti_ is an important dengue vector, therefore the main goal for vector control efforts would be to eliminate _Ae. aegypti_ in the home altogether. Furthermore, two of the three vector control efforts in this study target the larval stage which influenced our decision to choose larvae presence as our target variable. Our other option was a decision tree model, however, random forest models are less prone to overfitting. We utilized data cleaning methods that would prepare the data for a random forest classification model with _Ae. aegypti_ larvae presence as the outcome of interest. The aim of this study was to understand what affects the distinction between the presence and absence of larvae in households.
 
 **Figure 3.** Distribution of pupae index reveals that there are only positive counts of pupae
 
-![](RackMultipart20200720-4-4wn0p7_html_56767415e4a6ca47.png)
+![](./images/figure3.png "figure 3")
 
 _Data Cleaning_
 
@@ -56,15 +56,15 @@ During our data cleaning process, we found that the number of household resident
 
 **Figure 4.** Density plots exploring relationship between possible features (pupae index and week 0 [precipitation]) and target variable
 
-![](RackMultipart20200720-4-4wn0p7_html_337cfa0b8275cdf3.png) ![](RackMultipart20200720-4-4wn0p7_html_aaca6b924918b948.png)
+![](./images/figure4a.png "figure 4a") ![](./images/figure4b.png "figure 4b")
 
 Finally, the aim of this study was to understand which features of the dataset best explained the distinction between the absence and presence of larvae. This target variable was encoded as a binary outcome with 0 as households without larvae presence and 1, for those with larvae presence (Fig. 5).
 
 **Figure 5.** Visualizing data cleaning of the larvae presence feature against the target variable. Larvae presence was rounded to the nearest integer to remove imputation aberrations
 
-![](RackMultipart20200720-4-4wn0p7_html_9444caaa51bb25e4.png)
+![](./images/figure5a.png "figure 5a")
 
-![](RackMultipart20200720-4-4wn0p7_html_8407c5783493e47a.png)
+![](./images/figure5b.png "figure 5b")
 
 **Methods:**
 
@@ -80,11 +80,11 @@ Feature importance analysis found that every feature contributes to the model. A
 
 **Figure 6.** Decision boundaries used for classification on training set and testing set for larvae presence given pupae index &amp; overcrowding
 
-![](RackMultipart20200720-4-4wn0p7_html_a6996336b71bf42a.png) ![](RackMultipart20200720-4-4wn0p7_html_f24c5c7964871000.png)
+![](./images/figure6a.png "figure 6a") ![](./images/figure6b.png "figure 6b")
 
 **Figure 7.** Feature importance analysis for random forest classification model with cut off at 90% cumulative importance
 
-![](RackMultipart20200720-4-4wn0p7_html_5ff708aa305ac799.png)
+![](./images/figure7.png "figure 7")
 
 Grid search parameter tuning identified that the optimized model for prediction accuracy has a depth of 2 for each tree in the random forest. The parameter-optimized model has 15 trees with a minimum of 2 samples required to split an internal node. The training accuracy was again 100% with a testing accuracy of 100%. 15-fold cross-validation found that the parameter-tuned model had a prediction accuracy of 97%
 
@@ -108,11 +108,11 @@ Future studies may implement PCA to examine which features contribute the most v
 
 **Figure 8.** Scree plot with all features included (left) and scree plot with only continuous variables included (right) with weights of each principal component
 
-![](RackMultipart20200720-4-4wn0p7_html_664902f005d32e0e.png) ![](RackMultipart20200720-4-4wn0p7_html_e86ee12697dc6385.png)
+![](./images/figure8a.png "figure 8a") ![](./images/figure8b.png "figure 8b")
 
 **Figure 9.** Scatter plot with all features (left) and scatter plot with only continuous variables (right) for the first two principal components
 
-![](RackMultipart20200720-4-4wn0p7_html_ffb5fceaa9540cb4.png) ![](RackMultipart20200720-4-4wn0p7_html_9685bf25eac6828c.png)
+![](./images/figure9a.png "figure 9a") ![](./images/figure9b.png "figure 9b")
 
 An interesting discovery is that with all features, the weight of the first principal component is very high. However, when we limit the data to only continuous variables, the weight of the first two principal components are much more reasonable. The scatter plot with only continuous variables had pupae index, overcrowding, illiteracy, unemployment, week 0 precipitation, week 1 lagged precipitation, week 2 lagged precipitation, water volume in breeding site, volume of breeding site, weekly trash collection, number of adults, number of children and duration of last water interruption included. Clustering and trends became more evident in this PCA than that with all possible features. These findings may be useful for a future study that aims to reduce the unavoidable noise in entomological data.
 
